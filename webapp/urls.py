@@ -11,5 +11,5 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-    url(r'$',   'webapp.views.index'),
+    url(r'$',   'main.views.index'),
 )
