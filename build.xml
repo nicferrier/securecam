@@ -1,0 +1,32 @@
+<project name="build script" default="cameraphoto" basedir="flashsrc">
+    <dirname property="builddir" file="${ant.file}"/>
+    <property name="flex_dir" location="/Developer/SDKs/flex_sdk_4.0.0.14159_mpl/"/>
+    <property name="mxmlc" location="${flex_dir}/bin/mxmlc"/>
+    
+    <property name="release_dir" location="${basedir}/../flash/"/>
+    <property name="build_dir" location="${basedir}/../flashbuild/"/>
+    <property name="cameraphoto_swf_file" value="${build_dir}/CameraPhoto.swf"/>
+    
+    <target name="cameraphoto" depends="release"/>
+    
+    <target name="build">
+        <delete file="${build_dir}/CameraPhoto.swf"/>
+        <exec executable="${mxmlc}" dir="${basedir}" failonerror="true">
+            <arg line="-incremental"/>
+            <arg line="--target-player=10.0.0"/>
+            <arg line="-output ${cameraphoto_swf_file}"/>
+            <arg line="--"/>
+            <arg line="WebCameraThing.mxml"/>
+        </exec>
+    </target>
+    
+    <target name="release" depends="build">
+        <copy file="${cameraphoto_swf_file}" todir="${release_dir}" overwrite="true"/>
+        <delete dir="${build_dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build_dir}"/>
+    </target>
+
+</project>
