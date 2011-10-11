@@ -210,6 +210,7 @@ package {
             debug("onLoaded target data" + data);
             if (lastHttpStatus == 200) {
                 debug("calling external");
+                debug(data.toString());
                 ExternalInterface.call('webcam.flash_notify', "success", data);
             }
         }
@@ -235,30 +236,6 @@ package {
                 photoBytes = encoder.encode(bmpdata);
                 debug("jpeg length: " + photoBytes.length);
 
-                /* the direct method
-
-                   var head:URLRequestHeader = new URLRequestHeader("Accept","text/*");
-                   var req:URLRequest = new URLRequest(endpoint + "direct/");
-                   req.requestHeaders.push(head);
-                   
-                   req.data = photoBytes;
-                   req.method = URLRequestMethod.POST;
-                   req.contentType = "image/jpeg";
-                
-                   var loader:URLLoader = new URLLoader();
-                   loader.addEventListener(Event.COMPLETE, onLoaded);
-                
-                   trace("sending post to: " + url);
-                   
-                   try {
-                       loader.load(req);
-                    } 
-                    catch (error:Error) {
-                       trace("Unable to load requested document.");
-                       ExternalInterface.call('webcam.flash_notify', "error", "Unable to post data: " + error);
-                    }
-                */
-
                 var request:MultipartURLLoader = new MultipartURLLoader();
                 request.addEventListener(Event.COMPLETE, onLoaded);
                 request.addEventListener(HTTPStatusEvent.HTTP_STATUS, onHttp);
@@ -280,7 +257,7 @@ package {
                 // file data: ByteArray, File name, Name of the file field, content MIME type (default application/octet-stream)
                 // use [] if you need identical file field name
                 // specify MIME type for your file part
-                request.addFile(photoBytes, 'upload.jpg', 'mugshot', 'image/jpeg');
+                request.addFile(photoBytes, 'upload.jpg', 'photo', 'image/jpeg');
                 try {
                     debug("sending post to: " + endpoint);
                     request.load(endpoint);
@@ -310,7 +287,7 @@ package {
 
         private function debug(msg:String):void 
         {
-            ExternalInterface.call("cameraphoto_log", "DEBUG: " + msg);
+            ExternalInterface.call("webcam.log", "DEBUG: " + msg);
         }
     }
 }

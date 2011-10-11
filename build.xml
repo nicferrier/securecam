@@ -3,7 +3,7 @@
     <property name="flex_dir" location="/Developer/SDKs/flex_sdk_4.0.0.14159_mpl/"/>
     <property name="mxmlc" location="${flex_dir}/bin/mxmlc"/>
     
-    <property name="release_dir" location="${basedir}/../flash/"/>
+    <property name="release_dir" location="${basedir}/../webapp/static/flash/"/>
     <property name="build_dir" location="${basedir}/../flashbuild/"/>
     <property name="cameraphoto_swf_file" value="${build_dir}/CameraPhoto.swf"/>
     
