@@ -1,5 +1,5 @@
 # Django settings for securecam project.
-
+from os import path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -51,7 +51,7 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = 'http://0.0.0.0:8000/uploads'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -73,6 +73,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    path.abspath('static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -96,17 +97,18 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'securecam.urls'
+ROOT_URLCONF = 'webapp.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    'templates',
 )
 
 INSTALLED_APPS = (
@@ -120,7 +122,70 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'muphan',
+    'social_auth'
 )
+
+
+# Social Auth
+AUTHENTICATION_BACKENDS = (
+    # 'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    # 'social_auth.backends.google.GoogleOAuthBackend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.google.GoogleBackend',
+    # 'social_auth.backends.yahoo.YahooBackend',
+    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
+    # 'social_auth.backends.contrib.orkut.OrkutBackend',
+    # 'social_auth.backends.contrib.foursquare.FoursquareBackend',
+    # 'social_auth.backends.contrib.github.GithubBackend',
+    # 'social_auth.backends.contrib.dropbox.DropboxBackend',
+    # 'social_auth.backends.contrib.flickr.FlickrBackend',
+    # 'social_auth.backends.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_IMPORT_BACKENDS = (
+    'webapp.social_auth_extra_services',
+)
+
+SOCIAL_AUTH_ENABLED_BACKENDS = ('facebook',)
+
+# TWITTER_CONSUMER_KEY         = ''
+# TWITTER_CONSUMER_SECRET      = ''
+FACEBOOK_APP_ID              = '287399094617117'
+FACEBOOK_API_SECRET          = '45d6034124410a59d290d5b9e7a98b6c'
+# LINKEDIN_CONSUMER_KEY        = ''
+# LINKEDIN_CONSUMER_SECRET     = ''
+# ORKUT_CONSUMER_KEY           = ''
+# ORKUT_CONSUMER_SECRET        = ''
+# GOOGLE_CONSUMER_KEY          = ''
+# GOOGLE_CONSUMER_SECRET       = ''
+# GOOGLE_OAUTH2_CLIENT_ID      = ''
+# GOOGLE_OAUTH2_CLIENT_SECRET  = ''
+# FOURSQUARE_CONSUMER_KEY      = ''
+# FOURSQUARE_CONSUMER_SECRET   = ''
+# GITHUB_APP_ID                = ''
+# GITHUB_API_SECRET            = ''
+# DROPBOX_APP_ID               = ''
+# DROPBOX_API_SECRET           = ''
+# FLICKR_APP_ID                = ''
+# FLICKR_API_SECRET            = ''
+
+from django.template.defaultfilters import slugify
+SOCIAL_AUTH_USERNAME_FIXER = lambda u: slugify(u)
+SOCIAL_AUTH_UUID_LENGTH = 16
+
+# testing social auth
+# twitter testing
+TEST_TWITTER_USER = 'io2'
+TEST_TWITTER_PASSWORD = 'l1nchp1n'
+
+# facebook testing
+TEST_FACEBOOK_USER = 'o.ekanem'
+TEST_FACEBOOK_PASSWORD = 'p1ss@FF'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -144,3 +209,4 @@ LOGGING = {
         },
     }
 }
+
