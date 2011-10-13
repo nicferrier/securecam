@@ -6,7 +6,7 @@ if (window.console === undefined || window.console.log === undefined) {
 var securecam = function() {
     // private funcs go here
     var cameraLoadComplete = null;
-    var self = {        
+    var self = {
         // public funcs go here
         init: function() {
             $(document).trigger('woome_init', self);
@@ -34,9 +34,27 @@ var securecam = function() {
                 self.log("successfully uploaded photo");
             }
         },
+        start_capture: function() {
+            $('#capture_button')[0].innerHTML = 'Stop Recording ...';
+            $('#capture_button')[0].onclick = function () { webcam.stop_capture (); };
+
+            self.capture();
+            self.running_id = setInterval(function() { self.capture(); }, 30000);
+        },
+        stop_capture: function() {
+            $('#capture_button')[0].innerHTML = 'Start Recording ...';
+            $('#capture_button')[0].onclick = function () { webcam.start_capture(); };
+            clearInterval(self.running_id);
+            self.log("stopped capturing pid: " + self.running_id);
+        },
         capture: function(){
+            var roomid = $('#roomid')[0].value;
+            var username = $('#username')[0].value;
+            var image_upload_url = '/room/' + roomid + '/image/';
+            
+            alert('taking a photo in room ... ' + roomid);
             if (cameraLoadComplete) {
-                swfobject.getObjectById('camera')._snap('/' + 'io2' + '/room1/image/', 0.75, false, '', 1);
+                swfobject.getObjectById('camera')._snap(image_upload_url, 0.75, false, '', 1);
             } else {
                 self.log("camera not loaded yet...");
             }
