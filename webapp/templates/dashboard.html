@@ -1,0 +1,29 @@
+
+
+Welcome back {{ request.user.first_name }}
+
+{% if request.user.rooms.count > 0 %}
+<h2> Your Rooms </h2>
+    
+{% for room in request.user.rooms.all %} 
+    {{ room.name }} 
+    {{ room.is_active }} 
+    {{ room.lastrecorded }} 
+{% endfor %}    
+room1 - last recorded ... 2011 10 12 23:56:09
+room2 - last recorded ... 2011 09 12 23:01:11
+
+
+{% else %}
+<h2> Setup Rooms <h2>
+    
+    <pre>
+        You can setup multiple rooms on different computers to be monitored in your absence. 
+        It's very simple, create a room using the form below, turn on your webcam and leave the page open.
+    </pre>
+    
+    <form name="create_room" method="post" action="/room/">
+        <input name="name" type="text"></input>
+        <input type="submit"/>
+    </form>
+{% endif %}
