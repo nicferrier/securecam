@@ -9,7 +9,7 @@ var securecam = function() {
     var self = {
         // public funcs go here
         init: function() {
-            $(document).trigger('woome_init', self);
+            $(document).trigger('securecam_init', self);
             self.log("loading camera....");
             self.loadcamera();
         },
