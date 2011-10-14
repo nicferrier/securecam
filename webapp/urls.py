@@ -24,19 +24,19 @@ if settings.DEBUG:
 # social auth urls
 urlpatterns = patterns('',
     url(r'', include('social_auth.urls')),
-    url(r'accounts/profile/$',  'main.views.account_profile'),
-    url(r'accounts/login/$',    'main.views.login_page'),
-    url(r'dashboard/$',         'main.views.dashboard'),
-    
-    url(r'room/$',              'main.views.rooms'),
-    url(r'room/(?P<roomid>[0-9]+)/setup/$',   'main.views.room_setup'),
-    url(r'room/(?P<roomid>[0-9]+)/review/$',  'main.views.room_review'),
-    url(r'room/(?P<roomid>[0-9]+)/image/$',   'main.views.room_upload'),
 )
 
 # our urls.
 urlpatterns += patterns('',
-    url(r'^(?P<username>[a-zA-Z0-9]+)/(?P<room_id>[a-zA-Z0-9]+)/image/', 'main.views.upload'),
+    url(r'accounts/profile/$',  'main.views.account_profile'),
+    url(r'accounts/login/$',    'main.views.login_page'),
+
+    url(r'room/$',              'main.views.rooms'),
+    url(r'room/(?P<roomid>[0-9]+)/setup/$',   'main.views.room_setup'),
+    url(r'room/(?P<roomid>[0-9]+)/review/$',  'main.views.room_review'),
+    url(r'room/(?P<roomid>[0-9]+)/image/$',   'main.views.room_upload'),
+
+    url(r'dashboard/$',         'main.views.dashboard'),    
     url(r'^/index$',   'main.views.index'),
 )
 
