@@ -1,14 +1,14 @@
 
 
-Welcome back {{ request.user.first_name }}
+Welcome back {{ user.first_name }}
 
-{% if request.user.rooms.count > 0 %}
+{% if user.rooms.count > 0 %}
 <h2> Your Rooms </h2>
     
-{% for room in request.user.rooms.all %} 
-    {{ room.name }} 
-    {{ room.is_active }} 
-    {{ room.lastrecorded }} 
+{% for room in user.rooms.all %} 
+    <a href="/room/{{room.id}}/review/">{{ room.name }} </a>
+    Active: <span>{{ room.is_active }} </span>
+    Last Recorded: <span>{{ room.lastrecorded|date }} </span>
 {% endfor %}    
 room1 - last recorded ... 2011 10 12 23:56:09
 room2 - last recorded ... 2011 09 12 23:01:11
