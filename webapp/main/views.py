@@ -27,12 +27,14 @@ def account_profile(request):
     """display profile information form and user can save if they wish.
        link to dashboard.
     """
-    return render_to_response('profile.html', RequestContext(request))
+    context = RequestContext(request, {'user': request.user})
+    return render_to_response('profile.html', context)
 
 @login_required
 def dashboard(request):
     """manage rooms and attached cameras - link to review rooms pictures"""
-    return render_to_response('dashboard.html', RequestContext(request))
+    context = RequestContext(request, {'user': request.user})
+    return render_to_response('dashboard.html', context)
 
 class Upload(forms.Form):
     title = forms.CharField(max_length=150, required=False)
