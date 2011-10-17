@@ -1,0 +1,90 @@
+body {
+    font: 100%/1.5;
+    text-align: center;
+    background-color: #465158;
+    margin: 0;
+    padding: 0;
+}
+
+div#body {
+    background-color: white;
+    height: 800px;
+    margin: 0;
+    padding: 0.5em 1.3em;
+}
+
+#header {
+    font-size: 1em;
+    background-color: #465158;
+    height: 40px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+/* NAVIGATION BAR --------------------------------------------------------- */
+
+div#navbar ul {
+    height: 2.5em;
+}
+
+div#navbar ul li {
+    margin: 0;
+    padding: 0.65em 0;
+    float: left;
+    display: block;
+    color: white; /* For the >> separators */
+    font-size: 0.8em;
+}
+
+div#navbar ul li.right {
+    float: right;
+    margin-right: 5px;
+    color: transparent; /* Hide the | separators */
+}
+
+/* "Breadcrumb" links in nav bar */
+div#navbar ul li a {
+    text-decoration: none;
+    order: none;
+    background-color: inherit;
+    font-weight: bold;
+    margin: 6px 0 6px 4px;
+    line-height: 1.75em;
+    color: #ffffff;
+    padding: 0.4em 0.8em;
+    border: none;
+}
+/* previous / next / modules / index links look more like buttons */
+div#navbar ul li.right a {
+    margin: 0.375em 0;
+    background-color: #697983;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+/* All navbar links light up as buttons when hovered */
+div#navbar ul li a:hover {
+    background-color: #8ca1af;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+/* footer */
+div#footer {
+    background-color: #465158;
+    color: #EEE;
+    padding: 0 2em 2em 2em;
+    clear: both;
+    font-size: 0.8em;
+    text-align: center;
+}
