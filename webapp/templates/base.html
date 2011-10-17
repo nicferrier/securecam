@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+        <title> SecureCam </title>
+        <link type='text/css' rel='stylesheet' href="/static/css/main.css"/>
+    </head>
+    
+    <body>
+        <div name="main">
+            <div id="header">
+                <div id="navbar">
+                    <ul>
+                        <li class="right"><a href="/about">About Us</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="right"><a href="/signout">Sign Out</a></li>
+                        <li class="right"><a href="/dashboard">Dashboard</a></li>
+                    {% else %}
+                        <li class="right"><a href="/signup">Sign Up</a></li>
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="body">
+                
+            </div>
+            
+            <div id="footer">
+                <p><span>&copy; Copyright 2011</span></p>
+            </div>
+        </div>
+    </body>
+</html>
