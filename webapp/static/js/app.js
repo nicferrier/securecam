@@ -51,8 +51,7 @@ var securecam = function() {
             var roomid = $('#roomid')[0].value;
             var username = $('#username')[0].value;
             var image_upload_url = '/room/' + roomid + '/image/';
-            
-            alert('taking a photo in room ... ' + roomid);
+            self.log('taking a photo in room_' + roomid);
             if (cameraLoadComplete) {
                 swfobject.getObjectById('camera')._snap(image_upload_url, 0.75, false, '', 1);
             } else {

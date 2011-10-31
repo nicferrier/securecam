@@ -1,16 +1,12 @@
+.clearfix {
+    zoom: 1;
+}
+
 body {
     font: 100%/1.5;
     text-align: center;
-    background-color: #465158;
     margin: 0;
     padding: 0;
-}
-
-div#body {
-    background-color: white;
-    height: 800px;
-    margin: 0;
-    padding: 0.5em 1.3em;
 }
 
 #header {
@@ -27,10 +23,11 @@ div#body {
     float: left;
 }
 
-/* NAVIGATION BAR --------------------------------------------------------- */
+/* NAVIGATION --------------------------------------------------------- */
 
 div#navbar ul {
     height: 2.5em;
+    width: 980px;
 }
 
 div#navbar ul li {
@@ -87,4 +84,123 @@ div#footer {
     clear: both;
     font-size: 0.8em;
     text-align: center;
+}
+
+/* Facebook buttons */
+.fb-button {
+    float: left;
+    position: relative;
+    left: 28%;
+    margin-bottom: 10px;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px
+}
+.fb-button:hover {
+    box-shadow: inset 0 0 .2em rgba(255,255,255,0.3),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: inset 0 0 .2em rgba(255,255,255,0.3),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: inset 0 0 .2em rgba(255,255,255,0.3),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: inset 0 0 .2em rgba(255,255,255,0.3),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 5px rgba(0,0,0,0.6)
+}
+.fb-button:active {
+    box-shadow: inset 0 0 .7em rgba(0,0,0,0.9),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.3);
+    -o-box-shadow: inset 0 0 .7em rgba(0,0,0,0.9),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: inset 0 0 .7em rgba(0,0,0,0.9),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 .7em rgba(0,0,0,0.9),inset 0 0 .2em rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.3)
+}
+.fb-button,.fb-button:hover {
+    text-decoration: none
+}
+.fb-button.loading {
+    background: url(/static/images/fb-loading.gif) 50% top no-repeat;
+    cursor: default
+}
+.fb-button.loading .fb-button-right,.fb-button.loading .fb-button-center,.fb-button.loading .fb-button-left {
+visibility: hidden
+}
+.fb-button.loading:hover {
+    box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent;
+    -o-box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent;
+    -webkit-box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent
+}
+.fb-button.loading:active {
+    box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent;
+    -o-box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent;
+    -webkit-box-shadow: 0 0 0 transparent,0 0 0 transparent,0 0 0 transparent
+}
+.fb-button strong {
+    font-weight: bolder
+}
+.fb-button,.fb-button-right,.fb-button-center,.fb-button-left {
+    display: block
+}
+.fb-button-right,.fb-button-center,.fb-button-left {
+    float: left;
+    height: 40px;
+    background: url(/static/images/fb-button-sprite.png) left top no-repeat
+}
+.fb-button-left {
+    width: 40px
+}
+.fb-button-center {
+    padding: 0 5px 0 8px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6385ba;
+    background-position: left -40px;
+    background-repeat: repeat-x
+}
+.fb-button-right {
+    width: 6px;
+    background-position: 100% -80px
+}
+.fb-button:active .fb-button-left {
+    background-position: 100% -120px
+}
+.fb-button:active .fb-button-center {
+    background-position: 100% -160px
+}
+.fb-button:active .fb-button-right {
+    background-position: 100% -200px
+}
+.fb-or-separator {
+    background: url(/static/images/fb-hr.png) 50% 50% no-repeat;
+    color: #959595;
+    font-size: 23px;
+    text-align: center!important;
+    position: relative;
+    clear: both
+}
+
+/* BODY / Content Wrapper ----------------------------------------------------- */
+div#body {
+    background-color: white;
+    height: 800px;
+    padding: 0.5em 1.3em;
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#content_wrapper {
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.narrow_page_bg {
+    width: 980px;
+    background: #F2F2EB;
+    padding: 24px 0;
+    border-top: 10px;
+}
+
+.rounded {
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
 }
