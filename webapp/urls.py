@@ -29,7 +29,10 @@ urlpatterns = patterns('',
 # our urls.
 urlpatterns += patterns('',
     url(r'accounts/profile/$',  'main.views.account_profile'),
-    url(r'accounts/login/$',    'main.views.login_page'),
+    url(r'accounts/login/$',    'main.authentication.login_page'),
+    url(r'login$',              'main.authentication.login_page'),
+    url(r'logout$',             'main.authentication.logout'),
+    url(r'fbauth$',             'main.authentication.fb_authenticate'),
 
     url(r'room/$',              'main.views.rooms'),
     url(r'room/(?P<roomid>[0-9]+)/setup/$',   'main.views.room_setup'),
@@ -37,6 +40,7 @@ urlpatterns += patterns('',
     url(r'room/(?P<roomid>[0-9]+)/image/$',   'main.views.room_upload'),
 
     url(r'dashboard/$',         'main.views.dashboard'),    
-    url(r'^/index$',   'main.views.index'),
+    
+    url(r'^raw/(?P<template>[a-zA-Z]+).html$',     'main.views.raw'),
+    url(r'^index$',   'main.views.index'),
 )
-
