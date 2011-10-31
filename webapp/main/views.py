@@ -8,19 +8,17 @@ from django import forms
 from muphan.models import Photo
 from muphan.views import handle
 
-import appforms
-import models as appmodels
+import main.appforms as appforms
+import main.models as appmodels
 
 HTTP_CREATED = 201
 
 def index(request):
     return render_to_response('index.html', RequestContext(request))
 
-def login_page(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/dashboard/')
-    else:
-        return render_to_response('login.html')
+def raw(request, template):
+    context = RequestContext(request, {'user': request.user})
+    return render_to_response('%s.html' % template, context)
 
 @login_required
 def account_profile(request):
