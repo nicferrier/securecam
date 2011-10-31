@@ -1,29 +1,70 @@
+{% extends "base.html" %}
+{% block title%} Dashboard {% endblock %}
+
+{% block extra_js %}
+        <script src="{{STATIC_URL}}js/swfobject.js" type="text/javascript"></script>
+        <script src="{{STATIC_URL}}js/jquery-1.6.4.min.js" type="text/javascript"></script>
+{% endblock %}
 
 
-Welcome back {{ user.first_name }}
+{% block content %}
 
 {% if user.rooms.count > 0 %}
-<h2> Your Rooms </h2>
+    <h2> Rooms </h2>
     
-{% for room in user.rooms.all %} 
-    <a href="/room/{{room.id}}/review/">{{ room.name }} </a>
-    Active: <span>{{ room.is_active }} </span>
-    Last Recorded: <span>{{ room.lastrecorded|date }} </span>
-{% endfor %}    
-room1 - last recorded ... 2011 10 12 23:56:09
-room2 - last recorded ... 2011 09 12 23:01:11
-
-
-{% else %}
-<h2> Setup Rooms <h2>
-    
-    <pre>
+    <p>
         You can setup multiple rooms on different computers to be monitored in your absence. 
         It's very simple, create a room using the form below, turn on your webcam and leave the page open.
-    </pre>
-    
-    <form name="create_room" method="post" action="/room/">
-        <input name="name" type="text"></input>
-        <input type="submit"/>
-    </form>
-{% endif %}
+    </p>
+
+    <div id="room_form">
+        <form name="create_room" method="post" action="/room/">
+            <input name="name" type="text"></input>
+            <input type="submit"/>
+        </form>
+    </div>
+    <div id="rooms_container">
+        <ul id="rooms">
+            {% for room in user.rooms.all %} 
+            <li class="room" id="room_{{room.id}}">
+                <div class="room_latest_photo">
+                    <a href="/room/{{room.id}}/review/">{{ room.name }} </a>
+                </div>
+                Recording: <span>{{ room.is_active }} </span>
+                Last Recorded: <span>{{ room.lastrecorded|date }} </span>
+            </li>        
+            <li class="room " id="room_2730245">
+                <div class="user">
+                    <a href="/users/show/351926" onclick="window.open(this.href);return false;"><img alt="Cicely P" height="50" src="http://a3.muscache.com/users/351926/profile_pic/1315488372/small.jpg" title="Cicely P" width="50"></a>
+                    <p>
+                        <a href="/users/show/351926" class="name" onclick="window.open(this.href);return false;">{{ room.name }}</a>
+                        <br>
+                        1 minute
+                    </p>
+                </div>
+                <div class="message_details">
+                    <p> {{ room.description }} </p>
+                </div>
+                <div class="status">
+                    <div class="review">
+                        <p>
+                            <span class="review_pending rounded_less">
+                                Reviewed: {{ room.is_active }}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="options" id="options_2730245">
+                        <div class="star" id="room_2730245_starred" style="display: none; ">
+                            <a href="javascript:void(0);" data-room_id="2730245"></a>
+                        </div>
+                        <div class="hide" id="room_2730245_hidden" style="display: none; ">
+                          <a href="javascript:void(0);" data-room_id="2730245">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </div>
+        {% endif %}
+
+{% endblock %}

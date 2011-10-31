@@ -1,4 +1,18 @@
+{% extends "base.html" %}
+{% block title%} Login to Secure Cam {% endblock %}
 
-Login to Secure Cam
+{% block content %}
+    <div id="login_container">
+        <h2>Login to your Account</h2>
+        
+        <!--<a class="fb-button" href="https://www.facebook.com/dialog/oauth?client_id=287399094617117&amp;scope=email,user_birthday,user_likes,user_education_history,user_hometown,user_interests,user_activities,user_location&amp;redirect_uri=http%3A//securecam.com%3A8000/fbauth" data-redirect_uri="http://securecam.com:8000/fbauth" data-populate_uri="">-->
+        <a class="fb-button" href="/login/facebook/"  data-redirect_uri="http://securecam.com:8000/fbauth">
+        	<span class="fb-button-left"></span>
+        	<span class="fb-button-center"><strong>Login</strong> with <strong>Facebook</strong></span>
+        	<span class="fb-button-right"></span>
+        </a>
+        
+    <a href="/login/facebook/">login using facebook</a>
 
-<a href="/login/facebook/">login using facebook</a>
+
+{% endblock %}
